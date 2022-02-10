@@ -1,0 +1,84 @@
+.pdf-viewer {
+    max-width: $tablet-size;
+    min-height: 900px;
+    margin: 1rem auto;
+    border: 1px solid lightgray;
+    padding: 1rem;
+    font-size: 0.6rem;
+
+    h1 {
+        font-size: 1rem;
+        padding: 1rem 0;
+        text-align: center;
+        border-top: 1px solid #5D6975;
+        border-bottom: 1px solid #5D6975;
+    }
+    .logo {
+        text-align: center;
+    }
+    .logo img {
+        width: 120px;
+    }
+    header {
+        padding: 0.5rem 0;
+    }
+
+    header p {
+        margin-bottom: 0.3rem;
+    }
+    .customer {
+        float: left;
+    }
+    .customer p span:nth-child(1) {
+        display: inline-block;
+        width: 150px;
+        text-align: right;
+        margin-right: 0.2rem;
+        font-size: 0.5rem;
+    }
+    .customer p span:nth-child(2) {
+        color: #3e4246;
+    }
+    .company {
+        float: right;
+    }
+    table {
+        width: 100%;
+        padding: 0.5rem 0;
+        border-collapse: collapse;
+        border-spacing: 0;
+    }
+    table th {
+        border-top: 1px solid #5D6975;
+        border-bottom: 1px solid #5D6975;
+    }
+    table th,
+    table td {
+        padding: 0.3rem 0.5rem;
+        text-align: right;
+    }
+    table th:nth-child(1),
+    table td:nth-child(1) {
+        text-align: left;
+        width: 50%;
+    }
+
+    table tr:nth-child(odd) td {
+        background: #F5F5F5;
+    }
+
+    table.total {
+        margin-top: 0.5rem;
+    }
+
+    table.total tr td {
+        border-top: 1px solid #5D6975;
+        background: #F5F5F5;
+        text-align: right;
+    }
+
+    table.total tr td:nth-child(1) {
+        text-align: right;
+        width: auto;
+    }
+}

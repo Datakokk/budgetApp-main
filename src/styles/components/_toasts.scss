@@ -1,0 +1,35 @@
+.toast {
+    position: fixed;
+    top: 10px;
+    left: 50%;
+    z-index: 10000;
+    transform: translateX(-50%);
+    padding: 0.5rem 1rem 0.5rem 1.8rem;
+    background-color: white;
+    border: 1px solid;
+    border-left: 6px solid;
+    border-radius: 0.3rem;
+    background-repeat: no-repeat;
+    background-size: 22px 22px;
+    background-position: 4px 50%;
+
+    &.success {
+        border-color: $success-color;
+        background-image: url('/assets/img/icons/check-circle.svg');
+    }
+
+    &.warning {
+        border-color: $warning-color;
+        background-image: url('../../assets/img/icons/alert-circle.svg');
+    }
+
+    &.danger {
+        border-color: $danger-color;
+        background-image: url('../../assets/img/icons/alert-triangle.svg');
+    }
+
+    p {
+        font-size: 0.8rem;
+    }
+ 
+}

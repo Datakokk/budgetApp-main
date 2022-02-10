@@ -1,0 +1,107 @@
+<form [formGroup]="form">
+    <p *ngIf="budget">Presupuesto {{budget?.code}}</p>
+    <p class="form-title">Cliente</p>
+    <div class="row">
+        <div class="col-50 p-r">
+            <label>Nombre</label>
+            <input type="text" 
+                   formControlName="name"
+                   (keyup.arrowdown)="focusDown()"
+                   (keyup.arrowup)="focusUp()"
+                   (keyup.enter)="selectCustomer()">
+            <div class="search">
+                <div class="item" #searchItem
+                     *ngFor="let customer of customers"
+                     (click)="setCustomer(customer)">
+                    {{customer.name}}
+                </div>
+            </div>
+        </div>
+        <div class="col-50 p-l">
+            <label>CIF</label>
+            <input type="text" formControlName="cif" readonly>
+        </div>
+    </div>
+    <p class="form-title">A la atención de</p>
+    <div class="row">
+        <div class="col-50 p-r">
+            <label>Nombre</label>
+            <input type="text" formControlName="contactName" readonly>
+        </div>
+        <div class="col-50 p-l">
+            <label>Apellidos</label>
+            <input type="text" formControlName="contactSurname" readonly>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-50 p-r">
+            <label>Teléfono</label>
+            <input type="text" formControlName="contactPhone" readonly>
+        </div>
+        <div class="col-50 p-l">
+            <label>Correo electrónico</label>
+            <input type="text" formControlName="contactEmail" readonly>
+        </div>
+    </div>
+    <p class="form-title">Fechas</p>
+    <div class="row">
+        <div class="col-50 p-r">
+            <label>Fecha presupuesto</label>
+            <input type="date" formControlName="date">
+        </div>
+        <div class="col-50 p-r">
+            <label>Válido hasta</label>
+            <input type="date" formControlName="validUntil">
+        </div>
+    </div>
+    <p class="form-title">Artículos</p>
+    <div formArrayName="items">
+        <div class="items">
+            <div class="item">
+                <label>Artículo</label>
+            </div>
+            <div class="item">
+                <label>Cantidad</label>
+            </div>
+            <div class="item">
+                <label>Precio</label>
+            </div>
+            <div class="item">
+                <label>Importe</label>
+            </div>
+            <div class="item"></div>
+        </div>
+        <div *ngFor="let item of items.controls; let i=index">
+            <div class="items" [formGroupName]="i">
+                <div class="item">
+                    <input type="text" formControlName="article">
+                </div>
+                <div class="item">
+                    <input class="right" type="number" formControlName="quantity">
+                </div>
+                <div class="item">
+                    <input class="right" type="number" formControlName="price">
+                </div>
+                <div class="item">
+                    <input class="right" type="text" readonly [value]="item.get('amount').value | numberEuro: 2: '€'">
+                </div>
+                <div class="item flex j-end a-center">
+                    <button type="button" class="form-item" (click)="removeFormItem(i)">-</button>
+                    <button type="button" class="form-item m-l-small" *ngIf="i === items.controls.length - 1" (click)="addFormItem()">+</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <p class="form-title">Total presupuesto (precios e importe sin IVA)</p>
+    <div class="row">
+        <div class="col-75"></div>
+        <div class="col-25">
+            <input type="text" class="right" readonly [value]="form.controls.total.value | numberEuro: 2: '€'">
+        </div>
+    </div>
+    <div class="flex j-end a-center m-t">
+        <button *ngIf="budget" class="outline m-r" type="button" (click)="cancel()">Cancelar</button>
+        <button *ngIf="!budget" class="outline m-r" type="button" routerLink="/budgets/budgets-report">Cancelar</button>
+        <button type="button" (click)="submitBudget()">Enviar</button>
+    </div>
+</form>

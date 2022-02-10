@@ -1,0 +1,45 @@
+.card {
+    padding: 1rem;
+    border-radius: 0.3rem;
+    box-shadow: $shadow;
+    background-color: white;
+
+    &.home {
+        width: 360px;
+        padding: 0;
+
+        div:nth-child(1) {
+            padding: 2rem 1rem;
+            @include flex(row, center, center);
+            h1 {
+                font-size: 1.3rem;
+            }
+            img {
+                margin-left: 0.5rem;
+                height: 80px;
+            }
+        }
+        div:nth-child(2) {
+            padding: 1rem;
+            border-top: 1px solid lightgray;
+            @include flex(row, center, center);
+        }
+
+    }
+
+    &.twice {
+        grid-column: 1 / span 2;
+    }
+
+    &.triple {
+        grid-column: 1 / span 3;
+    }
+
+    @media (max-width: $tablet-size) {
+        &.twice,
+        &.triple {
+            grid-column: auto;
+        }
+    }
+
+}

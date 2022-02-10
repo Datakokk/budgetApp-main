@@ -1,0 +1,63 @@
+<div class="container show">
+    <app-breadcrumbs [dataRoutes]="dataRoutes"></app-breadcrumbs>
+    <div class="card">
+        <div class="pdf-viewer">
+            <div class="logo">
+                <img src="/assets/img/logo.svg">
+            </div>
+            <h1>Presupuesto nº {{budget?.code}}</h1>
+            <header>
+                <div class="customer">
+                    <p><span>CLIENTE</span><span>{{budget?.customer?.name}}</span></p>
+                    <p><span>DIRECCIÓN</span><span>{{budget?.customer?.adress}}</span></p>
+                    <p><span>LOCALIDAD</span><span>{{budget?.customer?.cp}} {{budget?.customer?.city}}</span></p>
+                    <p><span>A/ATT.</span><span>{{budget?.customer?.contact?.name}} {{budget?.customer?.contact?.surname}}</span></p>
+                    <p><span>EMAIL</span><span>{{budget?.customer?.contact?.email}}</span></p>
+                    <p><span>FECHA</span><span>{{budget?.date | date: 'dd/MM/yy'}}</span></p>
+                    <p><span>VÁLIDO HASTA</span><span>{{budget?.validUntil | date: 'dd/MM/yy'}}</span></p>
+                </div>
+                <div class="company">
+                    <p>ACME, S.A.</p>
+                    <p>Serrano Galvache, 26 28033 Madrid</p>
+                    <p>+34919999999</p>
+                    <p>info@acme.com</p>
+                </div>
+            </header>
+            <table>
+                <tr>
+                    <th>Artículo</th>
+                    <th>Cantidad</th>
+                    <th>Precio</th>
+                    <th>Importe</th>
+                </tr>
+                 <tr *ngFor="let item of budget?.items">
+                    <td>{{item.article}}</td>
+                    <td>{{item.quantity}}</td>
+                    <td>{{item.price}}</td>
+                    <td>{{item.amount}}</td>
+                </tr>
+            </table>
+            <table class="total">
+                <tr>
+                    <td colspan="3">Total presupuesto sin IVA</td>
+                    <td>{{totalBudget}}</td>
+                </tr>
+            </table>
+            <p style="margin-top: 0.2cm">Para mayor información contacte con {{user?.name}} {{user?.surname}} en el teléfono {{user?.phone}}</p>
+        </div>
+        <div class="flex j-center a-center m-t">
+            <!-- <a [href]="pathPDF" [target]="'_blank'"> -->
+                <button class="outline icon" (click)="generatePDF()">
+                    <img src="/assets/img/icons/file-text.svg" alt="">
+                    <span *ngIf="!generatingPDF">Descargar PDF</span>
+                    <span *ngIf="generatingPDF">Preparando PDF, espere...</span>
+                </button>
+            <!-- </a> -->
+            <button type="button"  class="outline icon m-l-small"  (click)="sendBudgetEmail()">
+                <img src="/assets/img/icons/mail.svg" alt="">
+                <span *ngIf="!sendingEmail">Enviar email</span>
+                <span *ngIf="sendingEmail">Enviando email, espere...</span>
+            </button>
+        </div>
+    </div>
+</div>

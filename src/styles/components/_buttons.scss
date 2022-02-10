@@ -1,0 +1,62 @@
+button {
+    font-size: 0.8rem;
+    padding: 0.5em 1em;
+    border-radius: 0.4em;
+    border: 1px solid $primary-font-color;
+    background-color: $primary-font-color;
+    color: white;
+    cursor: pointer;
+    transition: all 400ms ease-in-out;
+
+    &.outline {
+        color: $primary-font-color;
+        background-color: white;
+    }
+
+    &:hover {
+        background-color: $darker-primary-font-color;
+    }
+
+    &.outline:hover {
+        color: white;
+        background-color: $darker-primary-font-color;
+    }
+
+    &[disabled] {
+        background-color: #adadad;
+        border: 1px solid #adadad;
+        cursor: not-allowed;
+    }
+
+    &.icon {
+        @include flex(row, center, center);
+
+        img {
+            margin-right: 0.3rem;
+        }
+    }
+
+    &.warning {
+        background-color: $warning-color;
+        border: 1px solid $warning-color;
+    }
+
+    &.danger {
+        background-color: $danger-color;
+        border: 1px solid $danger-color;
+    }
+
+    &.form-item {
+        height: 1.8rem;
+        min-height: 1.8rem;
+        width: 1.8rem;
+        min-width: 1.8rem;
+        padding: 0;
+        font-size: 1.2rem;
+        border-radius: 50%;
+        border: 1px solid $regular-font-color;
+        background-color: white;
+        color: $regular-font-color;
+        @include flex(row, center, center);
+    }
+}

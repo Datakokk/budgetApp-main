@@ -1,0 +1,23 @@
+<aside #aside>
+    <div class="burger" (click)="toggleAsideMenu()">
+        <div class="bar top"></div>
+        <div class="bar center"></div>
+        <div class="bar bottom"></div>
+    </div>
+    <div class="item" (click)="navTo('/')">
+        Inicio
+        <img src="/assets/img/icons/home.svg" alt="">
+    </div>
+    <div class="item" (click)="navTo('/customers')" *ngIf="userRole === 'sales' || userRole === 'admin'">
+        Clientes
+        <img src="/assets/img/icons/customers.svg" alt="">
+    </div>
+    <div class="item" (click)="navTo('/budgets')" *ngIf="userRole === 'sales' || userRole === 'admin'">
+        Presupuestos
+        <img src="/assets/img/icons/budgets.svg" alt="">
+    </div>
+    <div class="item" (click)="navTo('/users')"  *ngIf="userRole === 'admin'">
+        Usuarios
+        <img src="/assets/img/icons/users.svg" alt="">
+    </div>
+</aside>

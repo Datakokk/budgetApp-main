@@ -1,0 +1,61 @@
+@import './abstracts/animations';
+@import './abstracts/mixins';
+@import './abstracts/variables';
+
+@import './base/reset';
+@import './base/typography';
+
+@import './components/breadcrumbs';
+@import './components/buttons';
+@import './components/cards';
+@import './components/forms';
+@import './components/modals';
+@import './components/spinner';
+@import './components/tables';
+@import './components/toasts';
+
+@import './layout/containers';
+@import './layout/nav';
+@import './layout/side';
+
+@import './pages/auth';
+@import './pages/avatar';
+@import './pages/pdfbudget';
+
+/* Generales */
+
+html {
+    font-size: 22px;
+
+    @media (max-width: $laptop-size) {
+        & {
+            font-size: 20px;
+        }
+    }
+    
+    @media (max-width: $tablet-size) {
+        & {
+            font-size: 18px;
+        }
+    }
+}
+
+
+body {
+    font-family: $regular-font-family;
+    color: $regular-font-color;
+    background-color: #f5f5f5;
+}
+
+h1 {
+    font-size: 1.5rem;
+    color: $primary-font-color;
+}
+
+b {
+    color: $primary-font-color;
+}
+
+ul {
+    list-style-position: inside;
+}

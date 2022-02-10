@@ -1,0 +1,30 @@
+.avatar-container {
+    @include flex(column, center, center);
+    padding: 1rem;
+
+    .avatar {
+        width: 200px;
+        height: 200px;
+        border-radius: 50%;
+        border: 6px solid $primary-font-color;
+        background-repeat: no-repeat;
+        background-position: center;
+        background-size: cover;
+    }
+
+    input {
+        visibility: hidden;
+    }
+
+    label {
+        display: inline-block;
+        width: auto;
+        font-size: 0.8rem;
+        margin-top: 1rem;
+        padding: 0.5em 1rem;
+        border-radius: 0.4em;
+        color: white;
+        background-color: $primary-font-color;
+    }
+
+}

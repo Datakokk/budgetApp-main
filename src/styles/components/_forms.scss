@@ -1,0 +1,208 @@
+form {
+    padding: 1rem;
+
+    .form-title {
+        @include flex(row, flex-start, center);
+        color: $primary-font-color;
+        font-size: 1rem;
+        margin: 1.5rem 0 0.5rem;
+
+        &:nth-of-type(1) {
+            margin: 0.5rem 0;
+        }
+
+        &::before {
+            content: "";
+            width: 10px;
+            border-bottom: 1px solid $primary-font-color;
+            margin: auto;
+            margin-right: 10px;
+        }
+
+        &::after {
+            content: "";
+            flex: 1 1;
+            border-bottom: 1px solid $primary-font-color;
+            margin: auto;
+            margin-left: 10px;
+        }
+    }
+
+    .row {
+        padding: 0.5rem 0;
+
+        &.column {
+            @include flex(column, flex-start, flex-start);
+        }
+
+        .col {
+
+            &-100,
+            &-75,
+            &-66,
+            &-50,
+            &-33,
+            &-25 {
+                padding: 0;
+                position: relative;
+                @include flex(column, center, flex-start)
+            }
+
+            &-100.p-l,
+            &-75.p-l,
+            &-66.p-l,
+            &-50.p-l,
+            &-33.p-l,
+            &-25.p-l {
+                padding-left: 0.5rem;
+            }
+
+            &-100.p-r,
+            &-75.p-r,
+            &-66.p-r,
+            &-50.p-r,
+            &-33.p-r,
+            &-25.p-r {
+                padding-right: 0.5rem;
+            }
+
+            @media (max-width: $tablet-size) {
+                &-100.p-r,
+                &-75.p-r,
+                &-66.p-r,
+                &-50.p-r,
+                &-33.p-r,
+                &-25.p-r {
+                    padding-right: 0;
+                    padding-bottom: 1rem;
+                }
+
+                &-100.p-l,
+                &-75.p-l,
+                &-66.p-l,
+                &-50.p-l,
+                &-33.p-l,
+                &-25.p-l {
+                    padding-left: 0;
+                }
+            }
+        }
+    }
+}
+
+label {
+    font-size: 0.7rem;
+    margin-bottom: 0.4rem;
+    text-transform: uppercase;
+
+    .success {
+        font-size: 0.6rem;
+        color: $success-color;
+    }
+
+    .alert {
+        font-size: 0.6rem;
+        color: $danger-color
+    }
+}
+
+input {
+    width: 100%;
+    font-size: 0.8rem;
+    padding: 0.5em 1em;
+    border: none;
+    border-bottom: 1px solid lightgray;
+    font-family: $regular-font-family;
+    transition: 400ms all ease-in-out;
+
+    &[type="date"] {
+        font-size: 0.75rem;
+    }
+
+    &.right {
+        text-align: right;
+    }
+
+    &::-webkit-outer-spin-button,
+    &::-webkit-inner-spin-button {
+        -webkit-appearance: none;
+        margin: 0;
+    }
+
+    &[type=number] {
+        -moz-appearance: textfield;
+    }
+}
+
+select {
+    -webkit-appearance: none;
+    width: 100%;
+    font-size: 0.8rem;
+    padding: 0.5em 1em;
+    border: 0.5px solid lightgray;
+    border-radius: 0.3rem;
+    color: $regular-font-color;
+    font-family: $regular-font-family;
+    background-image:
+        linear-gradient(45deg, transparent 50%, gray 50%),
+        linear-gradient(135deg, gray 50%, transparent 50%),
+        linear-gradient(to right, #ccc, #ccc);
+    background-position:
+        calc(100% - 20px) calc(1em + 2px),
+        calc(100% - 15px) calc(1em + 2px),
+        calc(100% - 2.5em) 0.5em;
+    background-size:
+        5px 5px,
+        5px 5px,
+        1px 1.5em;
+    background-repeat: no-repeat;
+}
+
+input:focus,
+select:focus {
+    outline: none;
+}
+
+.search {
+    position: absolute;
+    top: 3.4rem;
+    left: 0;
+    z-index: 10;
+    width: 100%;
+    background-color: white;
+    box-shadow: $bottom-shadow;
+
+    .item {
+        font-size: 0.7rem;
+        padding: 0.5rem 1rem;
+        transition: 300ms all ease-in-out;
+
+        &:hover,
+        &.selected {
+            cursor: pointer;
+            background-color: lightgray;
+        }
+    }
+}
+
+.items {
+    @include flex(row, center, center);
+
+    .item {
+        width: 10%;
+        margin: 0.5rem;
+
+        &:nth-child(1) {
+            width: 50%
+        }
+
+        &:nth-child(4) {
+            width: 20%
+        }
+
+        &:nth-child(5) {
+            width: 10%
+        }
+
+    }
+}

@@ -1,0 +1,7 @@
+<div class="container show">
+    <app-breadcrumbs [dataRoutes]="dataRoutes"></app-breadcrumbs>
+    <div class="card">
+        <app-budget-form
+             (budgetEmitter)="submitBudget($event)"></app-budget-form>
+    </div>
+</div>

@@ -1,0 +1,19 @@
+<nav>
+    <div class="user">
+        <div class="avatar" [ngStyle]="{'background-image': 'url(' + imageSrc + ')'}"></div>
+        {{user.name}}
+        <div class="dropdown">
+            <div class="menu">
+                <div class="item" routerLink="/user-profile">
+                    <img src="/assets/img/icons/user.svg" alt="">
+                    Mi cuenta
+                </div>
+                <hr>
+                <div class="item" (click)="logOut()">
+                    <img src="/assets/img/icons/arrow-out.svg" alt="">
+                    Cerrar sesión
+                </div>
+            </div>
+        </div>
+    </div>
+</nav>

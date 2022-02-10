@@ -1,0 +1,36 @@
+table {
+    width: 100%;
+    padding: 1rem;
+    border-collapse: collapse;
+
+    th {
+        padding: 0.5rem 1rem;
+        color: $primary-font-color;
+        border-bottom: 1px solid $primary-font-color;
+        text-align: left;
+    }
+
+    td {
+        padding: 0.5rem 1rem;
+        border-bottom: 1px solid lightgrey;
+
+        img {
+            height: 1.2rem;
+            cursor: pointer;
+        }
+    }
+
+    th.center,
+    td.center {
+        text-align: center;
+    }
+
+    th.right,
+    td.right {
+        text-align: right;
+    }
+
+    tr:last-child td {
+        border-bottom: none;
+    }
+}

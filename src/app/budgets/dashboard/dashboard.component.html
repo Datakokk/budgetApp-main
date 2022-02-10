@@ -1,0 +1,21 @@
+<div class="container show">
+    <app-breadcrumbs [dataRoutes]="dataRoutes">
+        <button class="outline" routerLink="budgets-report">Presupuestos</button>
+    </app-breadcrumbs>
+    <div class="grid-50">
+        <div class="card">
+            <p class="m-b">Tracking Presupuestos</p>
+            <div *ngIf="lineChart">
+                <canvas id="budgetsChart">{{lineChart}}</canvas>
+            </div>
+        </div>
+        <div class="card">
+            <p>Top 5</p>
+            <div *ngIf="pieChart">
+                <canvas id="customersChart">{{pieChart}}</canvas>
+            </div>
+        </div>
+        <!-- <div class="card twice">
+        </div> -->
+    </div>
+</div>

@@ -1,0 +1,35 @@
+<div class="container show">
+    <app-breadcrumbs [dataRoutes]="dataRoutes">
+        <button class="outline" routerLink="create-customer">Nuevo Cliente</button>
+    </app-breadcrumbs>
+    <div class="card">
+        <table>
+            <tr>
+                <th>Nombre</th>
+                <th>CIF</th>
+                <th>Localidad</th>
+                <th></th>
+            </tr>
+            <tr *ngFor="let customer of customers" [appLoading]="{showLoading: false, display: 'table-row'}">
+                <td>{{customer.name}}</td>
+                <td>{{customer.cif}}</td>
+                <td>{{customer.city}}</td>
+                <td>
+                    <img src="/assets/img/icons/edit.svg" routerLink="update-customer/{{customer._id}}">
+                </td>
+            </tr>
+        </table>
+        <div class="spinner" [appLoading]="{showLoading: true, display: 'block'}">
+            <div class="sk-folding-cube">
+                <div class="sk-cube1 sk-cube"></div>
+                <div class="sk-cube2 sk-cube"></div>
+                <div class="sk-cube4 sk-cube"></div>
+                <div class="sk-cube3 sk-cube"></div>
+            </div>
+        </div>
+        <div class="flex j-end a-center">
+            <button *ngIf="skip > 0" (click)="changePage(-1)">Ant</button>
+            <button *ngIf="skip < totalCustomers - limit" (click)="changePage(1)"class="m-l-small">Sig</button>
+        </div>
+    </div>
+</div>

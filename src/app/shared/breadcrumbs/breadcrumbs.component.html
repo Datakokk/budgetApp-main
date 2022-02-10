@@ -1,0 +1,13 @@
+<div class="breadcrumbs">
+    <div>
+        <p *ngFor="let breadcrumb of dataBreadcrumbs; let i = index">
+            <span *ngIf="i === 0" routerLink="/">Inicio &gt;&nbsp;</span>
+            <span *ngIf="i !== 0 && dataBreadcrumbs.length !== i + 1" 
+                    routerLink="{{breadcrumb.absolutePath}}">
+                    {{breadcrumb.title}} &gt;&nbsp;
+            </span>
+            <span class="active" *ngIf="dataBreadcrumbs.length === i + 1">{{breadcrumb.title}}</span>
+        </p>
+    </div>
+    <ng-content select="button"></ng-content>
+</div>

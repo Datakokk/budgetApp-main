@@ -1,0 +1,62 @@
+<div class="container show">
+    <app-breadcrumbs [dataRoutes]="dataRoutes"></app-breadcrumbs>
+    <div class="grid-50">
+        <div class="card">
+            <form [formGroup]="form">
+                <div class="row">
+                    <div class="col-100">
+                        <label>Nombre</label>
+                        <input type="text" formControlName="name">
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-100">
+                        <label>Apellidos</label>
+                        <input type="text" formControlName="surname">
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-100">
+                        <label>Correo electrónico</label>
+                        <input type="text" formControlName="email" readonly>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-100">
+                        <label>Dirección</label>
+                        <input type="text" formcControlName="adress">
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-100">
+                        <label>Código Postal</label>
+                        <input type="text" formControlName="cp">
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-100">
+                        <label>Localidad</label>
+                        <input type="text" formControlName="city">
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-100">
+                        <label>Teléfono</label>
+                        <input type="text" formControlName="phone">
+                    </div>
+                </div>
+                <div class="flex j-end a-center m-t">
+                    <button class="outline m-r-small" type="button" routerLink="/">Cancelar</button>
+                    <button type="button" (click)="updateUser()">Guardar cambios</button>
+                </div>
+            </form>
+        </div>
+        <div class="card">
+            <div class="avatar-container">
+                <div class="avatar" *ngIf="imageSrc" [ngStyle]="{'background-image': 'url(' + imageSrc + ')'}"></div>
+                <label for="avatar">Cambiar imagen</label>
+                <input id="avatar" ng2FileSelect [uploader]="uploader" type="file" (change)="sendAvatar($event)">
+            </div>
+        </div>
+    </div>
+</div>

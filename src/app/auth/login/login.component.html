@@ -1,0 +1,43 @@
+<div class="auth-container">
+    <div class="col-50"></div>
+    <div class="col-50">
+        <form [formGroup]="form" (submit)="logIn()">
+            <h1>Inicie sesión</h1>
+            <div class="row">
+                <div class="col-100">
+                    <label>Email</label>
+                    <input type="email" formControlName="email">
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-100">
+                    <label>Contraseña</label>
+                    <input type="password" formControlName="password">
+                </div>
+            </div>
+            <div class="flex j-between a-center m-t">
+                <p class="link">Si no dispone de cuenta pulse <span routerLink="/signup">aquí</span></p>
+                <button type="button" 
+                        class="outline"
+                        *ngIf="form.invalid"
+                        (click)="setValidation()">
+                    Enviar
+                </button>
+                <button type="submit" 
+                        class="outline"
+                        *ngIf="form.valid">
+                        <span [appLoading]="{showLoading: true, display: 'inline'}">Espere...</span>
+                        <span [appLoading]="{showLoading: false, display: 'inline'}">Enviar</span>  
+                </button>
+            </div>
+        </form>
+        <div class="auth-valid" *ngIf="showValidation && validationMessages.length > 0">
+            <img class="m-r-small" src="../../../assets/img/icons/alert-triangle-white.svg" alt="">
+            <ul>
+                <li *ngFor="let message of validationMessages">
+                    {{message}}
+                </li>
+            </ul>
+        </div>
+    </div>
+</div>

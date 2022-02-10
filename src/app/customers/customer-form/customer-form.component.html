@@ -1,0 +1,100 @@
+<form [formGroup]="form">
+    <p class="form-title">Cliente</p>
+    <div class="row">
+        <div class="col-100">
+            <label>
+                Nombre
+                <span class="alert" *ngIf="form.controls?.name?.errors?.required && showValidation">
+                    Nombre de cliente obligatorio
+                </span>
+            </label>
+            <input type="text" formControlName="name">
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-100">
+            <label>
+                CIF
+                <span class="alert" *ngIf="form.controls?.cif?.errors?.invalidCif && showValidation">
+                    {{form.controls?.cif?.errors?.mensaje}}
+                </span>
+            </label>
+            <input type="text" formControlName="cif" maxlength="9" [readonly]="customer !== undefined">
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-100">
+            <label>
+                Dirección
+                <span class="alert" *ngIf="form.controls?.adress?.errors?.required && showValidation">
+                    Dirección de cliente obligatoria
+                </span>
+            </label>
+            <input type="text" formControlName="adress">
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-50 p-r">
+            <label>Código Postal</label>
+            <input type="text" formControlName="cp">
+        </div>
+        <div class="col-50 p-l">
+            <label>
+                Localidad
+                <span class="alert" *ngIf="form.controls?.city?.errors?.required && showValidation">
+                    Localidad de cliente obligatoria
+                </span>
+            </label>
+            <input type="text" formControlName="city">
+        </div>
+    </div>
+    <p class="form-title">Contacto</p>
+    <div formGroupName="contact">
+        <div class="row">
+            <div class="col-50 p-r">
+                <label>
+                    Nombre
+                    <span class="alert" *ngIf="form.get('contact.name').errors?.required && showValidation">
+                        Nombre de contacto obligatorio
+                    </span>
+                </label>
+                <input type="text" formControlName="name">
+            </div>
+            <div class="col-50 p-l">
+                <label>
+                    Apellidos
+                    <span class="alert" *ngIf="form.get('contact.surname').errors?.required && showValidation">
+                        Nombre de contacto obligatorio
+                    </span>
+                </label>
+                <input type="text" formControlName="surname">
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-50 p-r">
+                <label>Teléfono</label>
+                <input type="text" formControlName="phone">
+            </div>
+            <div class="col-50 p-l">
+                <label>
+                    Correo electrónico
+                    <span class="alert" *ngIf="form.get('contact.email').errors?.required && showValidation">
+                        Correo electrónico de contacto obligatorio
+                    </span>
+                    <span class="alert" *ngIf="form.get('contact.email').errors?.pattern && showValidation">
+                        El correo electrónico no es correcto
+                    </span>
+                </label>
+                <input type="text" formControlName="email">
+            </div>
+        </div>
+    </div>
+    <div class="flex j-end a-center m-t">
+        <button class="outline m-r-small" type="button" routerLink="/customers">Cancelar</button>
+        <button *ngIf="form.invalid" type="button" (click)="setValidation()">Enviar</button>
+        <button *ngIf="form.valid" type="button" (click)="submitCustomer()">
+            <span [appLoading]="{showLoading: true, display: 'inline'}">Espere...</span>
+            <span [appLoading]="{showLoading: false, display: 'inline'}">Enviar</span>  
+        </button>
+    </div>
+</form>

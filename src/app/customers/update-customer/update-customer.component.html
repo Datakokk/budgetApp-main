@@ -1,0 +1,9 @@
+<div class="container show">
+    <app-breadcrumbs [dataRoutes]="dataRoutes"></app-breadcrumbs>
+    <div class="card">
+        <app-customer-form 
+              *ngIf="customer"
+              [customer]="customer"
+              (customerEmitter)="submitCustomer($event)"></app-customer-form>
+    </div>
+</div>

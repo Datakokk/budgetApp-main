@@ -1,0 +1,66 @@
+.auth-container {
+    width: 100%;
+    height: 100vh;
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 1000;
+    @include flex(row, center, center);
+
+    @media (max-width: $tablet-size) {
+        @include flex(column-reverse, center, center);
+    }
+
+    > div {
+        height: 100vh;
+        background-color: white;
+
+        &:nth-child(1) {
+            background-image: url('/assets/img/front.jpg');
+            background-size: cover;
+        }
+
+        &:nth-child(2) {
+            background-color: $primary-font-color;
+            @include flex(column, flex-start, center);
+
+            form {
+                width: 80%;
+                color: white;
+
+                h1 {
+                    color: white;
+                    margin-bottom: 0.5rem;
+                }
+
+                input {
+                    font-size: 0.8rem;
+                    background-color: transparent;
+                    border: none;
+                    border-radius: 0;
+                    border-bottom: 1px solid white;
+                    color: white;
+                }
+
+                p.link {
+                    font-size: 0.7rem;
+
+                    span {
+                        font-weight: bold;
+                        cursor: pointer;
+                    }
+                }
+            }
+
+            .auth-valid {
+                font-size: 0.8rem;
+                padding: 0.5rem 1rem;
+                border-radius: 0.3rem;
+                color: $primary-font-color;
+                background-color: white;
+                @include flex(row, flex-start, center);
+            }
+
+        }
+    }
+}

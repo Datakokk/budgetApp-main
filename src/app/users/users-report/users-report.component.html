@@ -1,0 +1,28 @@
+<div class="container show">
+    <app-breadcrumbs [dataRoutes]="dataRoutes"></app-breadcrumbs>
+    <div class="card">
+        <table>
+            <tr>
+                <th>Nombre y Apellidos</th>
+                <th>Correo electrónico</th>
+                <th>Rol</th>
+                <th></th>
+            </tr>
+            <tr *ngFor="let user of users">
+                <td>{{user.name}} {{user.surname}}</td>
+                <td>{{user.email}}</td>
+                <td>
+                    <select (change)="onChangeRole(user._id, $event)">
+                        <option [selected]="user.role === 'user'" value="user">Usuario</option>
+                        <option [selected]="user.role === 'sales'" value="sales">Ventas</option>
+                        <option [selected]="user.role === 'admin'" value="admin">Administrador</option>
+                    </select>
+                </td>
+                <td>
+                    <img *ngIf="user._id !== userUpdated._id" src="/assets/img/icons/save-grey.svg">
+                    <img *ngIf="user._id === userUpdated._id" src="/assets/img/icons/save.svg" (click)="updateUserRole()">
+                </td>
+            </tr>
+        </table>
+    </div>
+</div>

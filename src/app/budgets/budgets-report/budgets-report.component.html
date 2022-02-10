@@ -1,0 +1,38 @@
+<div class="container show">
+    <app-breadcrumbs [dataRoutes]="dataRoutes">
+        <button class="outline" routerLink="/budgets/create-budget">Nuevo Presupuesto</button>
+    </app-breadcrumbs>
+    <div class="card">
+        <table>
+            <tr>
+                <th>Código</th>
+                <th>Cliente</th>
+                <th class="center">Fecha</th>
+                <th class="right">Importe sin IVA</th>
+                <th></th>
+            </tr>
+            <tr *ngFor="let budget of budgets">
+                <td>{{budget.code}}</td>
+                <td>{{budget.customer.name}}</td>
+                <td class="center">{{budget.date | date: 'dd/MM/yy'}}</td>
+                <td class="right">{{budget.total | numberEuro: 2: '€'}}</td>
+                <td>
+                    <img title="Visualizar presupuesto" src="/assets/img/icons/eye.svg" routerLink="/budgets/read-budget/{{budget._id}}">
+                    <img title="Editar presupuesto" class="m-l-small" src="/assets/img/icons/edit.svg" (click)="editBudget(budget._id)">
+                </td>
+            </tr>
+        </table>
+    </div>
+</div>
+<div class="overlay" #overlay appFadeLoad>
+    <div class="modal form">
+        <div class="modal-header">
+            <span (click)="closeModal()">&#x2715;</span>
+        </div>
+        <app-budget-form 
+                   *ngIf="budgetInEdit"
+                   [budget]="budgetInEdit"
+                   (budgetEmitter)="submitBudget($event)"
+                   (cancelEmitter)="closeModal()"></app-budget-form>
+    </div>
+</div>
